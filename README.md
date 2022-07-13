@@ -2,15 +2,33 @@
 
 SDU online 2022 summer project health monitor.
 
-## Getting Started
+学生在线2022暑期实训健康监测APP项目。
 
-This project is a starting point for a Flutter application.
+## TODOs
 
-A few resources to get you started if this is your first Flutter project:
+[] 食材的管理（搜索、添加等）
+[] 菜谱的展示（通过WebView调用前端同学的页面
+[] 用户信息的管理（更换头像、历史记录、收藏等
+[] 菜谱推荐
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## bugs
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Commit规范
+
+照抄i山大的格式得了，先用着下面几个标签
+
+```shell
+feat: 新功能
+fix: 修复buf
+doc: 修改文档
+refact: 重构代码
+other: 其他情况
+```
+
+提交格式为
+
+```shell
+<label>: <summary>
+<empty line>
+<details>
+```
