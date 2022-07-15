@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/routes/login.dart';
 import 'package:heal_monitor_flutter/util/shared_preference_util.dart';
+import 'package:heal_monitor_flutter/util/sqlite_util.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 Future<void> initialize() async {
-  await Future.wait([SharedPreferenceUtil.initialize()]);
+  await Future.wait(
+      [SharedPreferenceUtil.initialize(), SQLiteUtil.initialize()]);
 }
 
 class MyApp extends StatelessWidget {
