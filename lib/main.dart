@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:heal_monitor_flutter/routes/login.dart';
+import 'package:heal_monitor_flutter/routes/main.dart';
 import 'package:heal_monitor_flutter/util/shared_preference_util.dart';
 import 'package:heal_monitor_flutter/util/sqlite_util.dart';
 
@@ -40,11 +40,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Login(),
-    );
+    return Main();
   }
 }

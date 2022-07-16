@@ -5,48 +5,53 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: double.infinity,
-              margin: const EdgeInsets.only(left: 30.0, top: 30.0),
-              child: const Text(
-                '手机验证码登录',
-                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w400),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Hello'),
+        ),
+        body: SizedBox(
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(left: 30.0, top: 30.0),
+                child: const Text(
+                  '手机验证码登录',
+                  style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w400),
+                ),
               ),
-            ),
-            const Divider(height: 30.0),
-            const LoginForm(),
-            SizedBox(
-              height: 100.0,
-              child: Center(
-                child: SizedBox(
-                  width: 160.0,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.67))),
+              const Divider(height: 30.0),
+              const LoginForm(),
+              SizedBox(
+                height: 100.0,
+                child: Center(
+                  child: SizedBox(
+                    width: 160.0,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.67))),
+                      ),
+                      onPressed: () {},
+                      child: const Text('手机号登录'),
                     ),
-                    onPressed: () {},
-                    child: const Text('手机号登录'),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 100.0),
-            const SizedBox(
-              width: double.infinity,
-              child: OtherLoginMethod(),
-            ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              margin: const EdgeInsets.only(top: 20.0),
-              child: const Text('All rights reserved'),
-            )
-          ],
+              const SizedBox(height: 100.0),
+              const SizedBox(
+                width: double.infinity,
+                child: OtherLoginMethod(),
+              ),
+              Container(
+                padding: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.only(top: 20.0),
+                child: const Text('All rights reserved'),
+              )
+            ],
+          ),
         ));
   }
 }
@@ -120,7 +125,7 @@ class _LoginFormState extends State<LoginForm> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
           height: 40.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
