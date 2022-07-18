@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/routes/main.dart';
+import 'package:heal_monitor_flutter/util/LogUtil.dart';
 import 'package:heal_monitor_flutter/util/shared_preference_util.dart';
 import 'package:heal_monitor_flutter/util/sqlite_util.dart';
 
@@ -8,8 +9,11 @@ void main() {
 }
 
 Future<void> initialize() async {
-  await Future.wait(
-      [SharedPreferenceUtil.initialize(), SQLiteUtil.initialize()]);
+  await Future.wait([
+    SharedPreferenceUtil.initialize(),
+    SQLiteUtil.initialize(),
+    LogUtil.initialize()
+  ]);
 }
 
 class MyApp extends StatelessWidget {
@@ -40,6 +44,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Main();
+    return const Main();
   }
 }
