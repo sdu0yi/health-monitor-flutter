@@ -19,8 +19,9 @@ SDU online 2022 summer project health monitor.
 
 ```shell
 feat: 新功能
-fix: 修复buf
+fix: 修复bug
 doc: 修改文档
+style: 调整代码风格
 refact: 重构代码
 other: 其他情况
 ```
