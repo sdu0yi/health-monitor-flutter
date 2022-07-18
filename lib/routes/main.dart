@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/routes/cookbook_menu.dart';
 import 'package:heal_monitor_flutter/routes/ingredient_menu.dart';
+import 'package:heal_monitor_flutter/widgets/ingredient_floating_button.dart';
 
 class Main extends StatefulWidget {
   const Main({Key? key}) : super(key: key);
@@ -28,6 +29,9 @@ class _MainState extends State<Main> {
         index: _currentIndex,
         children: _pages,
       ),
+      floatingActionButton: _currentIndex == 1
+          ? IngredientFloatingButton(pressedFunction: () {})
+          : null,
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
