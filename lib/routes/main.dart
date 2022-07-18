@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/routes/cookbook_menu.dart';
 import 'package:heal_monitor_flutter/routes/ingredient_menu.dart';
+import 'package:heal_monitor_flutter/routes/user_info.dart';
 import 'package:heal_monitor_flutter/widgets/ingredient_floating_button.dart';
 
 class Main extends StatefulWidget {
@@ -18,7 +19,8 @@ class _MainState extends State<Main> {
   void initState() {
     _pages
       ..add(const CookbookMenu())
-      ..add(const IngredientMenu());
+      ..add(const IngredientMenu())
+      ..add(const UserInfo());
     super.initState();
   }
 
