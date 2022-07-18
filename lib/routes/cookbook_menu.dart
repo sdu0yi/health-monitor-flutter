@@ -15,7 +15,7 @@ class _CookbookMenuState extends State<CookbookMenu> {
     return Column(
       children: [
         const SizedBox(
-          height: 40.0,
+          height: 60.0,
         ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),

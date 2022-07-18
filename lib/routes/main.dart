@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/routes/cookbook_menu.dart';
+import 'package:heal_monitor_flutter/routes/ingredient_menu.dart';
 
 class Main extends StatefulWidget {
   const Main({Key? key}) : super(key: key);
@@ -10,11 +11,13 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   int _currentIndex = 0;
-   List<Widget> _pages = [];
+  final List<Widget> _pages = [];
 
   @override
   void initState() {
-    _pages.add(const CookbookMenu());
+    _pages
+      ..add(const CookbookMenu())
+      ..add(const IngredientMenu());
     super.initState();
   }
 
