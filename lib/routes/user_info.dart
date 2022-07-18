@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/widgets/user_header.dart';
 import 'package:heal_monitor_flutter/widgets/user_info_item.dart';
