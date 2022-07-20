@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +12,7 @@ class Entry extends StatelessWidget {
         color: const Color.fromARGB(255, 96, 102, 112),
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 120.0,
             ),
             Container(
@@ -58,7 +57,7 @@ class Entry extends StatelessWidget {
                 )
               ],
             )),
-            SizedBox(
+            const SizedBox(
               height: 120,
               child: RightsText(),
             ),
@@ -145,7 +144,7 @@ class _RightsTextState extends State<RightsText> {
             },
           ),
         ),
-        Container(
+        SizedBox(
           width: 220.0,
           child: RichText(
             text: TextSpan(
