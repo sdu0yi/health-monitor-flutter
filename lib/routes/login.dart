@@ -40,7 +40,10 @@ class Login extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 100.0),
+              const Expanded(
+                  child: SizedBox(
+                width: double.infinity,
+              )),
               const SizedBox(
                 width: double.infinity,
                 child: OtherLoginMethod(),

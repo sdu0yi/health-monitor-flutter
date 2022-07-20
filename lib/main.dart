@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heal_monitor_flutter/routes/login.dart';
 import 'package:heal_monitor_flutter/routes/main.dart';
 import 'package:heal_monitor_flutter/util/log_util.dart';
 import 'package:heal_monitor_flutter/util/shared_preference_util.dart';
@@ -25,8 +26,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          colorScheme: const ColorScheme.light()
+              .copyWith(primary: const Color.fromARGB(255, 96, 102, 112))),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -44,6 +45,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Main();
+    return const Login();
   }
 }
