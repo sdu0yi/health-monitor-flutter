@@ -39,6 +39,8 @@ dependencies:
   sqlite3: ^1.7.2
   logger: ^1.1.0
   dio: ^4.0.6
+  adaptive_dialog: ^1.6.4+2
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:

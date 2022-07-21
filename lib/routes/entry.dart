@@ -1,5 +1,8 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:heal_monitor_flutter/routes/login.dart';
 
 class Entry extends StatelessWidget {
   const Entry({Key? key}) : super(key: key);
@@ -36,21 +39,30 @@ class Entry extends StatelessWidget {
               children: [
                 LoginButton(
                   methodName: "手机号登录",
-                  loginFunction: () {},
+                  loginFunction: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (builder) {
+                      return Login();
+                    }));
+                  },
                   backgroundColor: const Color.fromARGB(255, 82, 86, 92),
                   textColor: Colors.white,
                   icon: Icons.phone_android_rounded,
                 ),
                 LoginButton(
                   methodName: "微信登录",
-                  loginFunction: () {},
+                  loginFunction: () {
+                    Fluttertoast.showToast(msg: '还没想好捏');
+                  },
                   backgroundColor: Colors.green,
                   textColor: Colors.white,
                   icon: Icons.wechat,
                 ),
                 LoginButton(
                   methodName: "QQ登录",
-                  loginFunction: () {},
+                  loginFunction: () {
+                    Fluttertoast.showToast(msg: '还没想好捏');
+                  },
                   backgroundColor: Colors.blue,
                   textColor: Colors.white,
                   icon: Icons.question_answer_outlined,
@@ -126,6 +138,8 @@ class _RightsTextState extends State<RightsText> {
   final _value = '1';
   String? _groupValue = '';
 
+  get key => null;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -157,13 +171,31 @@ class _RightsTextState extends State<RightsText> {
                   TextSpan(
                     text: '《用户协议》（隐私政策）',
                     style: const TextStyle(color: Colors.lightBlueAccent),
-                    recognizer: TapGestureRecognizer()..onTap = () {},
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        showAlertDialog(
+                            context: context,
+                            title: '用户协议',
+                            message: '啊吧啊吧吧',
+                            actions: <AlertDialogAction>[
+                              AlertDialogAction(key: key, label: '确认')
+                            ]);
+                      },
                   ),
                   const TextSpan(text: '以及'),
                   TextSpan(
                     text: '《儿童/青少年个人信息保护规则》',
                     style: const TextStyle(color: Colors.lightBlueAccent),
-                    recognizer: TapGestureRecognizer()..onTap = () {},
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        showAlertDialog(
+                            context: context,
+                            title: '儿童/青少年个人信息保护规则',
+                            message: '啊吧啊吧吧',
+                            actions: <AlertDialogAction>[
+                              AlertDialogAction(key: key, label: '确认')
+                            ]);
+                      },
                   ),
                 ]),
           ),
@@ -172,33 +204,3 @@ class _RightsTextState extends State<RightsText> {
     );
   }
 }
-
-/*
-Container(
-          width: 280.0,
-          //padding: const EdgeInsets.all(30.0),
-          //margin: const EdgeInsets.only(top: 40),
-          child: RichText(
-            text: TextSpan(
-                style: const TextStyle(
-                    fontSize: 10.0,
-                    color: Colors.white60,
-                    decoration: TextDecoration.none),
-                children: <InlineSpan>[
-                  const TextSpan(text: '我已阅读并同意'),
-                  TextSpan(
-                    text: '《用户协议》（隐私政策）',
-                    style: const TextStyle(color: Colors.lightBlueAccent),
-                    recognizer: TapGestureRecognizer()..onTap = () {},
-                  ),
-                  const TextSpan(text: '以及'),
-                  TextSpan(
-                    text: '《儿童/青少年个人信息保护规则》',
-                    style: const TextStyle(color: Colors.lightBlueAccent),
-                    recognizer: TapGestureRecognizer()..onTap = () {},
-                  ),
-                ]),
-          ),
-        )
-
- */
