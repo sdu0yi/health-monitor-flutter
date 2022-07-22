@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heal_monitor_flutter/routes/main.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -34,7 +35,12 @@ class Login extends StatelessWidget {
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.67))),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (builder) {
+                          return Main();
+                        }));
+                      },
                       child: const Text('手机号登录'),
                     ),
                   ),
