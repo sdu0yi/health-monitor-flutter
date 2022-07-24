@@ -1,4 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:heal_monitor_flutter/util/network_util.dart';
+import 'package:image_picker/image_picker.dart';
 
 /*
   这个注释与下个注释之间的内容
@@ -6,7 +9,14 @@ import 'package:flutter/material.dart';
 */
 Future<bool> _changeUserName(String newUsername) async {
   // int uid=想个办法弄到uid;
-  // var response=await NetworkUtil.postRequest("user/name", {"uid":uid,"username":newUsername},null);
+  // Response response=await NetworkUtil.postRequest("user/name", {"uid":uid,"username":newUsername},null);
+  debugPrint("修改了用户名:$newUsername");
+  return true;
+}
+Future<bool> _uploadAvatar(String image_path)async{
+  // FormData formData=FormData.fromMap({"file":MultipartFile.fromFile(image_path),});
+  // Response response=await NetworkUtil.postRequest("user/avatar", formData,null);
+  debugPrint("选择了头像:$image_path");
   return true;
 }
 
@@ -31,18 +41,29 @@ class UserHeader extends StatelessWidget {
           Expanded(child: _UserName(name)),
 
           // const Expanded(child: SizedBox()),
-          ClipOval(
+          IconButton(onPressed: ()async{
+            String?path=await _pickImage();
+            if(path!=null)_uploadAvatar(path);
+          }, icon: ClipOval(
               child: Image.network(
             img ?? 'https://www.sdu.edu.cn/images/logo.png',
             width: 90.0,
             height: 90.0,
             fit: BoxFit.cover,
-          ))
+          )),
+          iconSize: 90.0,padding: EdgeInsets.zero,
+          )
         ],
       ),
     );
   }
 }
+ImagePicker _picker=ImagePicker();
+Future<String?>_pickImage()async{
+  XFile?image=await _picker.pickImage(source: ImageSource.gallery);
+  return image?.path;
+}
+
 
 class _UserName extends StatefulWidget {
   final String? name;
@@ -65,6 +86,7 @@ class _UserNameState extends State<_UserName> {
         if (newName == "") controller.text = name;
         newName = name;
       });
+      return;
     }
     String oldName = name;
     setState(() {
