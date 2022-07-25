@@ -1,14 +1,15 @@
 
+
 /// response包装类
-class Response<T> {
-  int? code;
+class ResponseWrapper {
+  String? code;
   String? msg;
-  T? data;
-  List<T>? datas;
+  dynamic data;
+  List<dynamic>? datas;
 
-  Response({this.code, this.msg, this.data, this.datas});
+  ResponseWrapper({this.code, this.msg, this.data, this.datas});
 
-  Response.fromJson(Map<String, dynamic> json) {
+  ResponseWrapper.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     msg = json['msg'];
     data = json['data'];
@@ -22,6 +23,11 @@ class Response<T> {
     data['data'] = this.data;
     data['datas'] = datas;
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'ResponseWrapper{code: $code, msg: $msg, data: $data, datas: $datas}';
   }
 }
 

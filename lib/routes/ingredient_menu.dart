@@ -1,5 +1,11 @@
+
 import 'package:flutter/cupertino.dart';
+import 'package:heal_monitor_flutter/model/ingredient.dart';
+import 'package:heal_monitor_flutter/util/network_util.dart';
 import 'package:heal_monitor_flutter/widgets/ingredient_item.dart';
+import 'package:logger/logger.dart';
+
+import '../model/response_wrapper.dart';
 
 class IngredientMenu extends StatefulWidget {
   const IngredientMenu({Key? key}) : super(key: key);
@@ -9,6 +15,12 @@ class IngredientMenu extends StatefulWidget {
 }
 
 class _IngredientMenuState extends State<IngredientMenu> {
+  @override
+  void initState() {
+    refreshData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,5 +44,20 @@ class _IngredientMenuState extends State<IngredientMenu> {
         ))
       ],
     );
+  }
+}
+
+Future<void> refreshData() async {
+  var response = await NetworkUtil.instance.get('/ingredient/getlist',
+      queryParameters: {"page_size": 20, 'page': 1, 'query': ''});
+  // var responseJson = jsonDecode(response.data);
+  Logger()
+      .d('CODE: ${response.statusCode}, MESSAGE: ${response.statusMessage}');
+  ResponseWrapper ds = ResponseWrapper.fromJson(response.data);
+  Logger().d(ds);
+  List<Ingredient>? list;
+  for (var element in ds.datas!) {
+    list?.add(Ingredient.fromJson(element));
+    Logger().d(Ingredient.fromJson(element));
   }
 }

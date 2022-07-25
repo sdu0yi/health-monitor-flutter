@@ -37,6 +37,7 @@ dependencies:
 
   shared_preferences: ^2.0.15
   sqlite3: ^1.7.2
+  sqlite3_flutter_libs: ^0.5.8
   logger: ^1.1.0
   dio: ^4.0.6
   adaptive_dialog: ^1.6.4+2

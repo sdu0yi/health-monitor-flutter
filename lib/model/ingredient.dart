@@ -1,5 +1,5 @@
 class Ingredient {
-  String? iid;
+  int? iid;
   String? iname;
   String? taboos;
   String? introduction;
@@ -44,5 +44,10 @@ class Ingredient {
     data['taboo_people'] = tabooPeople;
     data['skill'] = skill;
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'Ingredient{iid: $iid, iname: $iname, taboos: $taboos, introduction: $introduction, value: $value, effect: $effect, applicablePeople: $applicablePeople, tabooPeople: $tabooPeople, skill: $skill}';
   }
 }

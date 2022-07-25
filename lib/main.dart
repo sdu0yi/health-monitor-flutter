@@ -1,18 +1,25 @@
+
 import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/routes/entry.dart';
 import 'package:heal_monitor_flutter/util/log_util.dart';
+import 'package:heal_monitor_flutter/util/network_util.dart';
 import 'package:heal_monitor_flutter/util/shared_preference_util.dart';
-import 'package:heal_monitor_flutter/util/sqlite_util.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initialize();
   runApp(const MyApp());
 }
 
 Future<void> initialize() async {
   await Future.wait([
     SharedPreferenceUtil.initialize(),
-    SQLiteUtil.initialize(),
-    LogUtil.initialize()
+    // SQLiteUtil.initialize(),
+    LogUtil.initialize(),
+    NetworkUtil.initialize(headers: {
+      'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    })
   ]);
 }
 
