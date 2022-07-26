@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/widgets/cookbook_item.dart';
+import 'package:heal_monitor_flutter/widgets/search_bar.dart';
 
 class CookbookMenu extends StatefulWidget {
   const CookbookMenu({Key? key}) : super(key: key);
@@ -19,10 +20,7 @@ class _CookbookMenuState extends State<CookbookMenu> {
         ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: const Text(
-            'SearchBar',
-            style: TextStyle(fontSize: 18.0),
-          ),
+          child:  SearchBar(),
         ),
         Expanded(
             child: Container(

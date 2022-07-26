@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/model/ingredient.dart';
 import 'package:heal_monitor_flutter/util/network_util.dart';
 import 'package:heal_monitor_flutter/widgets/ingredient_item.dart';
+import 'package:heal_monitor_flutter/widgets/search_bar.dart';
 import 'package:logger/logger.dart';
 
 import '../model/response_wrapper.dart';
@@ -46,10 +47,7 @@ class _IngredientMenuState extends State<IngredientMenu> {
         ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: const Text(
-            'SearchBar',
-            style: TextStyle(fontSize: 18.0),
-          ),
+          child: SearchBar(),
         ),
         Expanded(
           child: Container(
