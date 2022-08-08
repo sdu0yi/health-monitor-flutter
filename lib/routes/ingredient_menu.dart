@@ -17,7 +17,7 @@ class IngredientMenu extends StatefulWidget {
 class _IngredientMenuState extends State<IngredientMenu> {
   static const int _pageSize = 20;
   int _page = 0;
-  bool _more = true;
+  bool _needMore = true;
   String? _query;
   var _ingredientList = <Ingredient>[];
   final ScrollController _controller = ScrollController();
@@ -27,15 +27,23 @@ class _IngredientMenuState extends State<IngredientMenu> {
     super.initState();
     _requestData();
     _controller.addListener(() {
-      Logger().d(_controller.position.pixels);
-      Logger().d(_controller.position.maxScrollExtent);
-      if (_controller.position.pixels - _controller.position.maxScrollExtent <
-          20) {
-        if (_more) {
+      // Logger().d(
+      //     'Pixel: ${_controller.position.pixels}; Max Pixel: ${_controller.position.maxScrollExtent}');
+      if (_controller.position.maxScrollExtent - _controller.position.pixels <
+          200) {
+        if (_needMore) {
+          Logger().d('请求数据, page: $_page');
           _requestData();
+          _needMore = false;
         }
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -63,11 +71,16 @@ class _IngredientMenuState extends State<IngredientMenu> {
                         controller: _controller,
                         itemCount: _ingredientList.length,
                         itemBuilder: (BuildContext context, int index) {
-                          if (index >= _ingredientList.length) {
+                          // 判断是否需要更新数据
+                          if (_ingredientList.length - index <= 2) {
+                            _needMore = true;
+                          }
+                          if (index == _ingredientList.length - 1) {
                             return Column(
                               children: [
                                 IngredientItem(
-                                  name: _ingredientList[index].iname,
+                                  name:
+                                      '${_ingredientList[index].iname}, iid: ${_ingredientList[index].iid}',
                                 ),
                                 const Divider(),
                                 const CircularProgressIndicator()
@@ -75,7 +88,8 @@ class _IngredientMenuState extends State<IngredientMenu> {
                             );
                           } else {
                             return IngredientItem(
-                              name: _ingredientList[index].iname,
+                              name:
+                                  '${_ingredientList[index].iname}, iid: ${_ingredientList[index].iid}',
                             );
                           }
                         })),
@@ -87,7 +101,9 @@ class _IngredientMenuState extends State<IngredientMenu> {
 
   Future<void> _refreshData() async {
     _page = 0;
-    Logger().i('REFRESH DATA');
+    Logger().i('重置数据');
+    _ingredientList = <Ingredient>[];
+    _requestData();
   }
 
   _requestData() async {
@@ -103,16 +119,15 @@ class _IngredientMenuState extends State<IngredientMenu> {
         List<Ingredient> responseList = [];
         responseData.datas?.forEach((element) {
           responseList.add(Ingredient.fromJson(element));
-          Logger().i(Ingredient.fromJson(element));
+          // Logger().i(Ingredient.fromJson(element));
         });
 
         _page == 0
             ? _ingredientList = responseList
             : _ingredientList.addAll(responseList);
+        Logger().d(_ingredientList.length);
+
         _page++;
-        if (responseList.length < _pageSize) {
-          _more = false;
-        }
       });
     }
   }

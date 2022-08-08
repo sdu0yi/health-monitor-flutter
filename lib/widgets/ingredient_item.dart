@@ -56,23 +56,22 @@ class IngredientItem extends StatelessWidget {
               ),
             )),
             Container(
-                width: 40.0,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.amberAccent),
-                      alignment: Alignment.center),
-                  onPressed: addFunction,
-                  child: const SizedBox(
-                    width: 20.0,
-                    height: 20.0,
-                    child: Icon(
+              width: 40.0,
+              height: 40.0,
+              margin: const EdgeInsets.all(20.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0),
+                  color: Colors.amberAccent),
+              child: Center(
+                child: IconButton(
+                    onPressed: addFunction,
+                    icon: const Icon(
                       Icons.add,
+                      size: 24.0,
                       color: Colors.black,
-                      size: 30.0,
-                    ),
-                  ),
-                )),
+                    )),
+              ),
+            ),
             const SizedBox(
               width: 15.0,
             ),
