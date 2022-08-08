@@ -15,24 +15,30 @@ class _CookbookItemState extends State<CookbookItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(5.0),
-      padding: const EdgeInsets.all(5.0),
-      decoration: const BoxDecoration(border: Border()),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.network(
-            widget.img ?? '',
-            height: 140.0,
-            width: double.infinity,
-            fit: BoxFit.fitWidth,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(2),
+            child: SizedBox.fromSize(
+              size: const Size.fromRadius(82),
+              child: Image.network(
+                widget.img ?? '',
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-          const Divider(height: 10.0),
-          Text(
-            widget.name ?? 'Empty',
-            style: const TextStyle(fontSize: 18.0),
-          )
+          Row(children: [
+            const SizedBox(
+              width: 20.0,
+            ),
+            Text(
+              widget.name ?? 'Empty',
+              style: const TextStyle(fontSize: 18.0),
+              overflow: TextOverflow.fade,
+            )
+          ])
         ],
       ),
     );
