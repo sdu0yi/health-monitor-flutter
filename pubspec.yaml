@@ -43,6 +43,7 @@ dependencies:
   adaptive_dialog: ^1.6.4+2
   fluttertoast: ^8.0.9
   image_picker: ^0.8.5
+  provider: ^6.0.3
 
 dev_dependencies:
   flutter_test:
