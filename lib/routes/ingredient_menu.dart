@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/model/ingredient.dart';
 import 'package:heal_monitor_flutter/util/network_util.dart';
 import 'package:heal_monitor_flutter/widgets/cart_list.dart';
+import 'package:heal_monitor_flutter/widgets/ingredient_floating_button.dart';
 import 'package:heal_monitor_flutter/widgets/ingredient_item.dart';
 import 'package:heal_monitor_flutter/widgets/search_bar.dart';
 import 'package:logger/logger.dart';
@@ -19,10 +20,12 @@ class _IngredientMenuState extends State<IngredientMenu> {
   static const int _pageSize = 20;
   int _page = 0;
   bool _needMore = true;
-  bool _showBottom = true;
+  bool _showBottom = false;
   String? _query;
   var _ingredientList = <Ingredient>[];
   final ScrollController _controller = ScrollController();
+  //For IngredientFloatingButton
+  Offset?_IFBOffset;
 
   @override
   void initState() {
@@ -50,6 +53,7 @@ class _IngredientMenuState extends State<IngredientMenu> {
 
   @override
   Widget build(BuildContext context) {
+    final Size _size=MediaQuery.of(context).size;
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -101,6 +105,44 @@ class _IngredientMenuState extends State<IngredientMenu> {
               ),
             )
           ],
+        ),
+        Positioned(
+          left:_IFBOffset?.dx,
+          top:_IFBOffset?.dy,
+          right:_IFBOffset==null?16:null,
+            bottom:_IFBOffset==null?16:null,
+            child: Draggable(
+              feedback: IngredientFloatingButton(pressedFunction: () {}),
+              childWhenDragging: Container(),
+              onDraggableCanceled: (Velocity velocity, Offset offset) {
+                // 计算组件可移动范围  更新位置信息
+                setState(() {
+                  var x = offset.dx;
+                  var y = offset.dy;
+                  if (offset.dx < 8) {
+                    x = 8;
+                  }
+
+                  if (offset.dx > _size.width-64) {
+                    x = _size.width-64;
+                  }
+
+                  if (offset.dy < kBottomNavigationBarHeight) {
+                    y = kBottomNavigationBarHeight;
+                  }
+
+                  if (offset.dy > _size.height - 139) {
+                    y = _size.height - 139;
+                  }
+
+                  _IFBOffset = Offset(x, y);
+                });
+              },
+              child: IngredientFloatingButton(pressedFunction: () {setState(() {
+                _showBottom=true;
+              });}),
+              // onDragUpdate: (d){print("U $d");},
+            )
         ),
         Positioned(
             child: _showBottom

@@ -11,12 +11,14 @@ class UserInfo extends StatelessWidget {
       width: double.infinity,
       child: Column(
         children: [
-          const SizedBox(
+          Container(
+            color: const Color.fromARGB(255, 82, 86, 92),
             height: 60.0,
           ),
-          const SizedBox(
+          Container(
             height: 160.0,
-            child: Center(
+            color: const Color.fromARGB(255, 82, 86, 92),
+            child: const Center(
               child: UserHeader(),
             ),
           ),

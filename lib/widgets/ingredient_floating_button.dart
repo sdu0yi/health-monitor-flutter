@@ -12,9 +12,13 @@ class IngredientFloatingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const Color transparentGrey=Color(0x7E080808);
     return FloatingActionButton(
       onPressed: pressedFunction,
-      child: Text(title ?? '确认'),
+      backgroundColor: transparentGrey,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0),),
+      // child: Text(title ?? '确认'),
+      child:const Image(image:AssetImage("icons/菜篮子.png"),width: 48,height: 48,),
     );
   }
 }

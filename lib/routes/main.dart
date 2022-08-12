@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/routes/cookbook_menu.dart';
 import 'package:heal_monitor_flutter/routes/ingredient_menu.dart';
 import 'package:heal_monitor_flutter/routes/user_info.dart';
-import 'package:heal_monitor_flutter/widgets/ingredient_floating_button.dart';
 
 class Main extends StatefulWidget {
   const Main({Key? key}) : super(key: key);
@@ -26,14 +25,16 @@ class _MainState extends State<Main> {
 
   @override
   Widget build(BuildContext context) {
+    // final double iconSize = IconTheme.of(context).size ?? 24;
+    final double iconSize = 36;
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
         children: _pages,
       ),
-      floatingActionButton: _currentIndex == 1
-          ? IngredientFloatingButton(pressedFunction: () {})
-          : null,
+      // floatingActionButton: _currentIndex == 1
+      //     ? IngredientFloatingButton(pressedFunction: () {})
+      //     : null,
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
@@ -41,10 +42,52 @@ class _MainState extends State<Main> {
           });
         },
         currentIndex: _currentIndex,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: '菜谱'),
-          BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: '食材'),
-          BottomNavigationBarItem(icon: Icon(Icons.abc_outlined), label: '个人中心')
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Image(
+                image: const AssetImage("icons/home0.png"),
+                height: iconSize,
+                width: iconSize,
+                color: Colors.black,
+              ),
+              activeIcon: Image(
+                image: const AssetImage("icons/home1.png"),
+                height: iconSize,
+                width: iconSize,
+                color: Colors.black,
+              ),
+              label: '菜谱',
+              ),
+          BottomNavigationBarItem(
+              icon: Image(
+                image: const AssetImage("icons/食材0.png"),
+                height: iconSize,
+                width: iconSize,
+                color: Colors.black,
+              ),
+              activeIcon: Image(
+                image: const AssetImage("icons/食材1.png"),
+                height: iconSize,
+                width: iconSize,
+                color: Colors.black,
+              ),
+              label: '食材'
+              ),
+          BottomNavigationBarItem(
+              icon: Image(
+                image: const AssetImage("icons/user0.png"),
+                height: iconSize,
+                width: iconSize,
+                color: Colors.black,
+              ),
+              activeIcon: Image(
+                image: const AssetImage("icons/user1.png"),
+                height: iconSize,
+                width: iconSize,
+                color: Colors.black,
+              ),
+              label: '个人中心'
+          )
         ],
       ),
     );
