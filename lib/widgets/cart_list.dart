@@ -3,13 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:heal_monitor_flutter/widgets/cart_item.dart';
 
 class CartList extends StatefulWidget {
-  const CartList({Key? key}) : super(key: key);
+  const CartList({Key? key, required this.cartList}) : super(key: key);
+
+  final List<CartItem> cartList;
 
   @override
   State<CartList> createState() => _CartListState();
 }
 
 class _CartListState extends State<CartList> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  CartItem _getItem(context, index) {
+    return widget.cartList[index];
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -34,10 +45,10 @@ class _CartListState extends State<CartList> {
           //})),
           SizedBox(
             height: 180.0,
-            child: ListView(
-              padding: const EdgeInsets.only(top: 0.0),
-              children: const [CartItem(), CartItem(), CartItem(),CartItem()],
-            ),
+            child: ListView.builder(
+                padding: const EdgeInsets.only(top: 0.0),
+                itemCount: widget.cartList.length,
+                itemBuilder: (context, index) => _getItem(context, index)),
           ),
           Container(
             color: Colors.white,

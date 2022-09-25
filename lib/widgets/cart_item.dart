@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({Key? key, this.url, this.name}) : super(key: key);
+  const CartItem({Key? key, this.url, required this.name, required this.id})
+      : super(key: key);
 
   final String? url;
-  final String? name;
+  final String name;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,10 @@ class CartItem extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15.0),
               width: 120.0,
-              child: Text(name ?? 'Empty',style: const TextStyle(fontSize: 16.0),),
+              child: Text(
+                name,
+                style: const TextStyle(fontSize: 16.0),
+              ),
             ),
             Expanded(
               child: Container(),

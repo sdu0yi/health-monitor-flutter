@@ -26,7 +26,7 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     // final double iconSize = IconTheme.of(context).size ?? 24;
-    final double iconSize = 36;
+    const double iconSize = 36;
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -42,52 +42,49 @@ class _MainState extends State<Main> {
           });
         },
         currentIndex: _currentIndex,
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Image(
-                image: const AssetImage("icons/home0.png"),
+                image: AssetImage("icons/home0.png"),
                 height: iconSize,
                 width: iconSize,
                 color: Colors.black,
               ),
               activeIcon: Image(
-                image: const AssetImage("icons/home1.png"),
+                image: AssetImage("icons/home1.png"),
                 height: iconSize,
                 width: iconSize,
                 color: Colors.black,
               ),
-              label: '菜谱',
-              ),
+              label: ''),
           BottomNavigationBarItem(
               icon: Image(
-                image: const AssetImage("icons/食材0.png"),
+                image: AssetImage("icons/食材0.png"),
                 height: iconSize,
                 width: iconSize,
                 color: Colors.black,
               ),
               activeIcon: Image(
-                image: const AssetImage("icons/食材1.png"),
+                image: AssetImage("icons/食材1.png"),
                 height: iconSize,
                 width: iconSize,
                 color: Colors.black,
               ),
-              label: '食材'
-              ),
+              label: ''),
           BottomNavigationBarItem(
               icon: Image(
-                image: const AssetImage("icons/user0.png"),
+                image: AssetImage("icons/user0.png"),
                 height: iconSize,
                 width: iconSize,
                 color: Colors.black,
               ),
               activeIcon: Image(
-                image: const AssetImage("icons/user1.png"),
+                image: AssetImage("icons/user1.png"),
                 height: iconSize,
                 width: iconSize,
                 color: Colors.black,
               ),
-              label: '个人中心'
-          )
+              label: '')
         ],
       ),
     );
