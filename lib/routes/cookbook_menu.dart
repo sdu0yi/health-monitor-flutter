@@ -24,10 +24,10 @@ class _CookbookMenuState extends State<CookbookMenu> {
         ),
         Expanded(
             child: Container(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(4.0),
           child: GridView(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, mainAxisSpacing: 10.0,crossAxisSpacing: 5.0),
+                crossAxisCount: 2, mainAxisSpacing: 12.0,crossAxisSpacing: 0.0),
             children: const [
               CookbookItem(
                   img:
