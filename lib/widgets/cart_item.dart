@@ -20,7 +20,7 @@ class CartItem extends StatelessWidget {
           children: [
             Image.network(
               url ?? 'https://book.flutterchina.club/assets/img/logo.png',
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15.0),

@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:heal_monitor_flutter/routes/login.dart';
+import 'package:heal_monitor_flutter/routes/register.dart';
 
 class Entry extends StatelessWidget {
   const Entry({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class Entry extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 LoginButton(
-                  methodName: "手机号登录",
+                  methodName: "用户登录",
                   loginFunction: () {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (builder) {
@@ -48,25 +49,28 @@ class Entry extends StatelessWidget {
                   backgroundColor: const Color.fromARGB(255, 82, 86, 92),
                   textColor: Colors.white,
                   icon: Icons.phone_android_rounded,
-                ),
+                  ),
                 LoginButton(
-                  methodName: "微信登录",
+                  methodName: "用户注册",
                   loginFunction: () {
-                    Fluttertoast.showToast(msg: '还没想好捏');
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (builder) {
+                      return Register();
+                    }));
                   },
                   backgroundColor: Colors.green,
                   textColor: Colors.white,
-                  icon: Icons.wechat,
+                  icon: Icons.phone_android_rounded,
                 ),
-                LoginButton(
-                  methodName: "QQ登录",
-                  loginFunction: () {
-                    Fluttertoast.showToast(msg: '还没想好捏');
-                  },
-                  backgroundColor: Colors.blue,
-                  textColor: Colors.white,
-                  icon: Icons.question_answer_outlined,
-                )
+                // LoginButton(
+                //   methodName: "QQ登录",
+                //   loginFunction: () {
+                //     Fluttertoast.showToast(msg: '还没想好捏');
+                //   },
+                //   backgroundColor: Colors.blue,
+                //   textColor: Colors.white,
+                //   icon: Icons.question_answer_outlined,
+                // )
               ],
             )),
             const SizedBox(

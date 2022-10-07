@@ -43,8 +43,7 @@ class _IngredientMenuState extends State<IngredientMenu> {
     _controller.addListener(() {
       // Logger().d(
       //     'Pixel: ${_controller.position.pixels}; Max Pixel: ${_controller.position.maxScrollExtent}');
-      if (_controller.position.maxScrollExtent - _controller.position.pixels <
-          200) {
+      if (_controller.position.maxScrollExtent - _controller.position.pixels < 200) {
         if (_needMore) {
           Logger().d('请求数据, page: $_page');
           _requestData();

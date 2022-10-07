@@ -15,7 +15,7 @@ class _CookbookItemState extends State<CookbookItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
+      height: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,7 +25,7 @@ class _CookbookItemState extends State<CookbookItem> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: SizedBox.fromSize(
-                size: const Size.fromRadius(96),
+                size: const Size.fromRadius(180),
                 child: Image.network(
                   widget.img ?? '',
                   fit: BoxFit.cover,
